@@ -1,0 +1,11 @@
+steps:
+  # Checkout the code from the GitHub repository
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/abhijitchavan408/Emp_auth']
+  # Build the Docker image using the Dockerfile in the repository
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/gcp-enterprise-class-lz/emp_auth', '.']
+    dir: 'Emp_auth'
+  # Push the Docker image to the artifact repository
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/gcp-enterprise-class-lz/emp_auth']
