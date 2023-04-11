@@ -14,7 +14,7 @@ namespace JWTAuth_Validation.Middleware
             var account = (LoginModel)context.HttpContext.Items["User"];
             if (account == null)
             {
-                // not logged in..
+                // not logged in.
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
             }
         }
