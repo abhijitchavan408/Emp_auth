@@ -57,7 +57,7 @@ namespace JWTAuth_Validation.Middleware
             }
             catch
             {
-                // do nothing if jwt validation fails
+                // do nothing if jwt validation fails.
                 // account is not attached to context so request won't have access to secure routes
             }
         }
