@@ -9,3 +9,18 @@ steps:
   # Push the Docker image to the artifact repository
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/gcp-enterprise-class-lz/emp_auth']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'emp_auth'
+      - '--image'
+      - 'gcr.io/gcp-enterprise-class-lz/emp_auth'
+      - '--region'
+      - '$_DEPLOY_REGION'
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+images: [gcr.io/gcp-enterprise-class-lz/emp_auth]
